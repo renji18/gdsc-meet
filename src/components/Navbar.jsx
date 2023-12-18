@@ -1,10 +1,13 @@
 import React from "react"
+import GDSC_LOGO from "../assets/Logo.jpeg"
 
 const Navbar = () => {
   return (
     <div className="flex flex-col md:flex-row px-3 py-2 z-50 absolute top-0 left-0 right-0 justify-between text-[#202124]">
-      <div className="left">
-        <div className="logo"></div>
+      <div className="flex items-center">
+        <div className="logo">
+          <img src={GDSC_LOGO} className="h-[60px]" alt="gdsc_logo" />
+        </div>
         <div className="flex justify-center md:justify-normal text-[40px] gap-2 text-neutral-500">
           <p>GDSC</p>
           <p className="font-light">Meet</p>

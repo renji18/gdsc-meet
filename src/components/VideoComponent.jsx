@@ -20,7 +20,7 @@ const VideoComponent = () => {
         if (!videoRef.current || !canvasRef.current) return
 
         videoRef.current.srcObject = stream
-        streamRef.current = stream // Store the stream in the separate ref
+        streamRef.current = stream
 
         const context = canvasRef.current.getContext("2d")
         const renderFrame = () => {
@@ -29,7 +29,6 @@ const VideoComponent = () => {
             canvasRef.current
               .toDataURL("image/png")
               .replace("image/png", "image/octet-stream")
-            // Call a function to handle the canvasData (e.g., post(canvasData))
           }
           requestAnimationFrame(renderFrame)
         }
@@ -43,7 +42,6 @@ const VideoComponent = () => {
     init()
 
     return () => {
-      // Clean up resources when the component unmounts
       if (streamRef.current) {
         const tracks = streamRef.current.getTracks()
         tracks.forEach((track) => track.stop())
@@ -54,14 +52,14 @@ const VideoComponent = () => {
   return (
     <div className="mt-24 md:mt-10">
       <div className="relative -z-10 flex justify-center">
-        <div className="h-[50vh] bg-sky-600 object-cover w-[50vw] rounded-lg" />
-        {/* <video
+        {/* <div className="h-[50vh] bg-sky-600 object-cover w-[50vw] rounded-lg" /> */}
+        <video
           className="h-[50vh] object-cover w-[50vw] rounded-lg"
           ref={videoRef}
           style={{ transform: "rotateY(180deg)" }}
           playsInline
           autoPlay
-        /> */}
+        />
         <div className="absolute font-bold text-white text-sm top-5 left-5">
           <p>Zhi Doh</p>
         </div>
@@ -79,7 +77,7 @@ const VideoComponent = () => {
           />
         </div>
       </div>
-      {/* <canvas className="hidden" ref={canvasRef} width="640" height="480" /> */}
+      <canvas className="hidden" ref={canvasRef} width="640" height="480" />
     </div>
   )
 }

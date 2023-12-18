@@ -10,18 +10,14 @@ const App = () => {
   useEffect(() => {
     const requestCameraPermission = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({
+        await navigator.mediaDevices.getUserMedia({
           video: true,
         })
-        // Do something with the stream, e.g., update state or pass it to VideoComponent
         setCameraPermissionGranted(true)
       } catch (error) {
-        // Handle the case where the user denies camera access
         console.error("Error accessing camera:", error)
       }
     }
-
-    // Call the function to request camera permission when the component mounts
     requestCameraPermission()
   }, [])
 

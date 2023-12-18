@@ -4,7 +4,6 @@ import Loader from "./Loader"
 const PopupComponent = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      // Call a function to hide the popup (e.g., hidePopup())
     }, 50000)
 
     return () => clearTimeout(timeout)
